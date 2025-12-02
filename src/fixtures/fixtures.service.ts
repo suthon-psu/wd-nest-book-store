@@ -87,6 +87,7 @@ export class FixturesService implements OnModuleInit {
         isbn: '978-0743273565',
         stock: 50,
         coverUrl: '/images/books/great-gatsby.jpg',
+        likeCount: 156,
         categoryId: categories[0].id, // Fiction
       },
       {
@@ -97,6 +98,7 @@ export class FixturesService implements OnModuleInit {
         isbn: '978-0451524935',
         stock: 75,
         coverUrl: '/images/books/1984.jpg',
+        likeCount: 203,
         categoryId: categories[0].id, // Fiction
       },
       {
@@ -107,6 +109,7 @@ export class FixturesService implements OnModuleInit {
         isbn: '978-0441172719',
         stock: 40,
         coverUrl: '/images/books/dune.jpg',
+        likeCount: 342,
         categoryId: categories[1].id, // Science Fiction
       },
       {
@@ -117,6 +120,7 @@ export class FixturesService implements OnModuleInit {
         isbn: '978-0553418026',
         stock: 60,
         coverUrl: '/images/books/martian.jpg',
+        likeCount: 189,
         categoryId: categories[1].id, // Science Fiction
       },
       {
@@ -127,6 +131,7 @@ export class FixturesService implements OnModuleInit {
         isbn: '978-0062316097',
         stock: 100,
         coverUrl: '/images/books/sapiens.jpg',
+        likeCount: 427,
         categoryId: categories[2].id, // Non-Fiction
       },
       {
@@ -137,6 +142,7 @@ export class FixturesService implements OnModuleInit {
         isbn: '978-0132350884',
         stock: 30,
         coverUrl: '/images/books/clean-code.jpg',
+        likeCount: 512,
         categoryId: categories[3].id, // Programming
       },
       {
@@ -147,6 +153,7 @@ export class FixturesService implements OnModuleInit {
         isbn: '978-0135957059',
         stock: 25,
         coverUrl: '/images/books/pragmatic-programmer.jpg',
+        likeCount: 391,
         categoryId: categories[3].id, // Programming
       },
       {
@@ -157,6 +164,7 @@ export class FixturesService implements OnModuleInit {
         isbn: '978-0201633610',
         stock: 20,
         coverUrl: '/images/books/design-patterns.jpg',
+        likeCount: 284,
         categoryId: categories[3].id, // Programming
       },
       {
@@ -167,6 +175,7 @@ export class FixturesService implements OnModuleInit {
         isbn: '978-1451648539',
         stock: 45,
         coverUrl: '/images/books/steve-jobs.jpg',
+        likeCount: 267,
         categoryId: categories[4].id, // Biography
       },
       {
@@ -177,6 +186,7 @@ export class FixturesService implements OnModuleInit {
         isbn: '978-0399590504',
         stock: 55,
         coverUrl: '/images/books/educated.jpg',
+        likeCount: 198,
         categoryId: categories[4].id, // Biography
       },
     ];

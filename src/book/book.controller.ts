@@ -31,4 +31,9 @@ export class BookController {
   remove(@Param('id') id: string) {
     return this.bookService.remove(+id);
   }
+
+  @Post(':id/like')
+  incrementLike(@Param('id') id: string) {
+    return this.bookService.incrementLike(+id);
+  }
 }

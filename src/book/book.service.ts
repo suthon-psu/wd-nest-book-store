@@ -18,7 +18,15 @@ export class BookService {
   }
 
   async findAll(): Promise<Book[]> {
-    return await this.bookRepository.find({ relations: ['category'] });
+    return await this.bookRepository.find({
+      relations: ['category'],
+      select: {
+        category: {
+          id: true,
+          name: true,
+        },
+      },
+    });
   }
 
   async findOne(id: number): Promise<Book> {
@@ -41,5 +49,11 @@ export class BookService {
   async remove(id: number): Promise<void> {
     const book = await this.findOne(id);
     await this.bookRepository.remove(book);
+  }
+
+  async incrementLike(id: number): Promise<Book> {
+    const book = await this.findOne(id);
+    book.likeCount += 1;
+    return await this.bookRepository.save(book);
   }
 }

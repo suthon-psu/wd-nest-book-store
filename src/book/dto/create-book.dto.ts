@@ -31,6 +31,11 @@ export class CreateBookDto {
   coverUrl?: string;
 
   @IsNumber()
+  @Min(0)
+  @IsOptional()
+  likeCount?: number;
+
+  @IsNumber()
   @IsNotEmpty()
   categoryId: number;
 }

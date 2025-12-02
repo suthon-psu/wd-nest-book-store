@@ -27,6 +27,9 @@ export class Book {
   @Column({ nullable: true })
   coverUrl: string;
 
+  @Column({ default: 0 })
+  likeCount: number;
+
   @ManyToOne(() => BookCategory, (category) => category.books)
   @JoinColumn({ name: 'categoryId' })
   category: BookCategory;
