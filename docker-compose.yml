@@ -33,6 +33,10 @@ services:
       NODE_ENV: development
       TSC_WATCHFILE: PriorityPollingInterval
       TSC_WATCHDIRECTORY: RecursiveDirectoryUsingDynamicPriorityPolling
+      # Authentication configuration
+      AUTH_ENABLED: "true"  # Set to "true" to enable Bearer token authentication
+      JWT_SECRET: "your-super-secret-jwt-key-change-in-production"
+      JWT_EXPIRES_IN: "1h"
     ports:
       - "3000:3000"
     volumes:

@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BookCategory } from '../book-category/entities/book-category.entity';
 import { Book } from '../book/entities/book.entity';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class FixturesService implements OnModuleInit {
@@ -13,6 +14,7 @@ export class FixturesService implements OnModuleInit {
     private bookCategoryRepository: Repository<BookCategory>,
     @InjectRepository(Book)
     private bookRepository: Repository<Book>,
+    private userService: UserService,
   ) {}
 
   async onModuleInit() {
@@ -29,12 +31,31 @@ export class FixturesService implements OnModuleInit {
   async loadFixtures() {
     try {
       // Load mock data (no need to clear - dropSchema handles it)
+      await this.createTestUser();
       const categories = await this.createCategories();
       await this.createBooks(categories);
 
       this.logger.log('Fixtures loaded successfully!');
     } catch (error) {
       this.logger.error('Error loading fixtures:', error.message);
+    }
+  }
+
+  private async createTestUser() {
+    this.logger.log('Creating test user...');
+    
+    // Check if test user already exists
+    const existingUser = await this.userService.findByUsername('demo');
+    if (existingUser) {
+      this.logger.log('Test user already exists, skipping creation');
+      return;
+    }
+
+    try {
+      await this.userService.createUser('demo', '1234', 'demo@example.com');
+      this.logger.log('Test user created: username=demo, password=1234');
+    } catch (error) {
+      this.logger.warn('Could not create test user:', error.message);
     }
   }
 

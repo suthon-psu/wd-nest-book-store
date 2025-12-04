@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -6,6 +7,9 @@ import { ConfigModule } from '@nestjs/config';
 import { BookCategoryModule } from './book-category/book-category.module';
 import { BookModule } from './book/book.module';
 import { FixturesModule } from './fixtures/fixtures.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -26,8 +30,16 @@ import { FixturesModule } from './fixtures/fixtures.module';
     BookCategoryModule,
     BookModule,
     FixturesModule,
+    UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
 })
 export class AppModule {}
