@@ -26,6 +26,9 @@ export class BookService {
           name: true,
         },
       },
+      order: {
+        id: 'ASC',
+      },
     });
   }
 
